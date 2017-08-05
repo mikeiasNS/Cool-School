@@ -1,0 +1,26 @@
+p#notice
+  = notice
+= link_to 'Novo Usuário', new_user_path, class: 'ui button black right floated'
+h1
+  | Users
+table.ui.very.basic.table
+  thead
+    tr
+      th
+        = t "activerecord.attributes.user.name"
+      th
+        = t "activerecord.attributes.user.username"
+      th.right.aligned.collapsing[colspan="2"]
+  tbody
+    - @users.each do |user|
+      tr
+        td
+          = user.name
+        td
+          = user.username
+        td.right.aligned.collapsing
+          = link_to edit_user_path(user)
+            i.edit.icon
+        td.right.aligned.collapsing
+          = link_to user, method: :delete, data: { confirm: 'Are you sure?' }
+            i.remove.icon

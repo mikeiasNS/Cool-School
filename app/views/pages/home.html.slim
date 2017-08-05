@@ -1,0 +1,28 @@
+h1
+  = t "welcome"
+table.ui.celled.table
+  thead
+    tr
+      th 
+        = t "menu.units"
+      th.center.aligned
+        = t "menu.classes"
+      th.center.aligned
+        = t "menu.teachers"
+      th.center.aligned
+        = t "menu.studants"
+      th.center.aligned
+        = t "menu.responsibles"
+  tbody
+    - @units.each do |unit|
+      tr
+        td
+          = unit.name
+        td.center.aligned
+          = unit.classes.count
+        td.center.aligned
+          = unit.teachers.count
+        td.center.aligned
+          = unit.studants.count
+        td.center.aligned
+          = unit.responsibles.count

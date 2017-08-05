@@ -1,0 +1,22 @@
+.ui.grid
+  .ten.wide.column
+    = form_with(model: school_class, local: true, class: 'ui form') do |form|
+      - if school_class.errors.any?
+        #error_explanation
+          =render 'shared/error_messages', object: school_class
+      .ui.grid
+        .eight.wide.column
+          .field
+            = form.label :teacher_id
+            = form.select :teacher_id, options_from_collection_for_select(@teachers, 'id', 'name')
+        .eight.wide.column
+          .field
+            = form.label :unit_id
+            = form.select :unit_id, options_from_collection_for_select(@units, 'id', 'name')
+        .four.wide.column
+          .field
+            = form.label :number
+            = form.text_field :number, id: :school_class_number
+        .sixteen.wide.column
+          .actions
+            = form.submit class: 'ui button black right floated'

@@ -1,0 +1,30 @@
+.ui.grid
+  .ten.wide.column
+    = form_with(model: unit, local: true, class: 'ui form') do |form|
+      - if unit.errors.any?
+        #error_explanation
+          =render 'shared/error_messages', object: unit
+      .ui.grid
+        .eight.wide.column
+          .field
+            = form.label :street
+            = form.text_field :street, id: :unit_street
+        .four.wide.column
+          .field
+            = form.label :number
+            = form.text_field :number, id: :unit_number
+        .four.wide.column
+          .field
+            = form.label :complement
+            = form.text_field :complement, id: :unit_complement
+        .eight.wide.column
+          .field
+            = form.label :name
+            = form.text_field :name, id: :unit_name
+        .eight.wide.column
+          .field
+            = form.label :school_id
+            = form.select :school_id, @schools, {}, {id: :unit_school}
+        .sixteen.wide.column
+          .actions
+            = form.submit class: 'ui button black right floated'

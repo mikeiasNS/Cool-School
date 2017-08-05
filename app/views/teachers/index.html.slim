@@ -1,0 +1,34 @@
+p#notice
+  = notice
+= link_to 'Novo Professor', new_teacher_path, class: 'ui button black right floated'
+h1
+  = t "menu.teachers"
+table.ui.very.basic.table
+  thead
+    tr
+      th
+        = t "activerecord.attributes.teacher.name"
+      th
+        = t "activerecord.attributes.teacher.cpf"
+      th
+        = t "activerecord.attributes.teacher.birthday"
+      th
+        = t "activerecord.attributes.teacher.unit_id"
+      th.right.aligned.collapsing[colspan="2"]
+  tbody
+    - @teachers.each do |teacher|
+      tr
+        td
+          = teacher.name
+        td
+          = teacher.cpf
+        td
+          = teacher.birthday
+        td
+          = teacher.unit.name
+        td.right.aligned.collapsing
+          = link_to edit_teacher_path(teacher)
+            i.edit.icon
+        td.right.aligned.collapsing
+          = link_to teacher, method: :delete, data: { confirm: 'Are you sure?' }
+            i.remove.icon

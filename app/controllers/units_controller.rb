@@ -1,5 +1,5 @@
 class UnitsController < ApplicationController
-  before_action :set_unit, only: [:show, :edit, :update, :destroy]
+  before_action :set_unit, only: [:edit, :update, :destroy]
 
   # GET /units
   # GET /units.json
@@ -7,18 +7,15 @@ class UnitsController < ApplicationController
     @units = Unit.all
   end
 
-  # GET /units/1
-  # GET /units/1.json
-  def show
-  end
-
   # GET /units/new
   def new
     @unit = Unit.new
+    @schools = School.all.map {|s| [s.name, s.id]}
   end
 
   # GET /units/1/edit
   def edit
+    @schools = School.all.map {|s| [s.name, s.id]}
   end
 
   # POST /units
@@ -28,7 +25,7 @@ class UnitsController < ApplicationController
 
     respond_to do |format|
       if @unit.save
-        format.html { redirect_to @unit, notice: 'Unit was successfully created.' }
+        format.html { redirect_to units_path, notice: 'Unit was successfully created.' }
         format.json { render :show, status: :created, location: @unit }
       else
         format.html { render :new }
@@ -42,7 +39,7 @@ class UnitsController < ApplicationController
   def update
     respond_to do |format|
       if @unit.update(unit_params)
-        format.html { redirect_to @unit, notice: 'Unit was successfully updated.' }
+        format.html { redirect_to units_path, notice: 'Unit was successfully updated.' }
         format.json { render :show, status: :ok, location: @unit }
       else
         format.html { render :edit }
@@ -69,6 +66,6 @@ class UnitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def unit_params
-      params.require(:unit).permit(:street, :number, :complement, :name, :school)
+      params.require(:unit).permit(:street, :number, :complement, :name, :school_id)
     end
 end

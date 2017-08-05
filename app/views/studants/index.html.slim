@@ -1,0 +1,30 @@
+p#notice
+  = notice
+= link_to 'Novo Aluno', new_studant_path, class: 'ui button black right floated'
+h1
+  = t "menu.studants"
+table.ui.very.basic.table
+  thead
+    tr
+      th
+        = t "activerecord.attributes.studant.name"
+      th
+        = t "activerecord.attributes.studant.birthday"
+      th
+        = t "activerecord.attributes.studant.unit_id"
+      th.right.aligned.collapsing[colspan="2"]
+  tbody
+    - @studants.each do |studant|
+      tr
+        td
+          = studant.name
+        td
+          = studant.birthday
+        td
+          = studant.unit.name
+        td.right.aligned.collapsing
+          = link_to edit_studant_path(studant)
+            i.edit.icon
+        td.right.aligned.collapsing
+          = link_to studant, method: :delete, data: { confirm: 'Are you sure?' }
+            i.remove.icon

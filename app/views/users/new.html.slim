@@ -1,0 +1,8 @@
+.ui.grid
+  .one.wide.column
+    =link_to users_path
+      i.angle.left.icon.back-icon
+  .fifteen.wide.column
+    h1
+      | Novo Usuário
+      = render 'form', user: @user

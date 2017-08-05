@@ -1,0 +1,38 @@
+p#notice
+  = notice
+= link_to 'Nova Unidade', new_unit_path, class: 'ui button black right floated'
+h1
+  = t "menu.units"
+table.ui.very.basic.table
+  thead
+    tr
+      th
+        = t "activerecord.attributes.unit.name"
+      th
+        = t "activerecord.attributes.unit.street"
+      th
+        = t "activerecord.attributes.unit.number"
+      th
+        = t "activerecord.attributes.unit.complement"
+      th
+        = t "activerecord.attributes.unit.school_id"
+      th.right.aligned.collapsing[colspan="2"]
+  tbody
+    - @units.each do |unit|
+      tr
+        td
+          = unit.name
+        td
+          = unit.street
+        td
+          = unit.number
+        td
+          = unit.complement
+        td
+          = unit.school.name
+        td.right.aligned.collapsing
+          = link_to edit_unit_path(unit)
+            i.edit.icon
+        td.right.aligned.collapsing
+          = link_to unit, method: :delete, data: { confirm: 'Are you sure?' }
+            i.remove.icon

@@ -1,0 +1,30 @@
+p#notice
+  = notice
+= link_to 'Novo Responsável', new_responsible_path, class: 'ui button black right floated'
+h1
+  = t "menu.responsibles"
+table.ui.very.basic.table
+  thead
+    tr
+      th
+        = t "activerecord.attributes.responsible.name"
+      th
+        = t "activerecord.attributes.responsible.cpf"
+      th
+        = t "activerecord.attributes.responsible.birthday"
+      th.right.aligned.collapsing[colspan="2"]
+  tbody
+    - @responsibles.each do |responsible|
+      tr
+        td
+          = responsible.name
+        td
+          = responsible.cpf
+        td
+          = responsible.birthday
+        td
+          = link_to edit_responsible_path(responsible)
+            i.edit.icon
+        td
+          = link_to responsible, method: :delete, data: { confirm: 'Are you sure?' }
+            i.remove.icon

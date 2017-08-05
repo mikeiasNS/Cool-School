@@ -1,0 +1,26 @@
+.ui.grid
+  .ten.wide.column
+    = form_with(model: teacher, local: true, class: 'ui form') do |form|
+      - if teacher.errors.any?
+        #error_explanation
+          =render 'shared/error_messages', object: teacher
+      .ui.grid
+        .ten.wide.column
+          .field
+            = form.label :name
+            = form.text_field :name, id: :teacher_name
+        .six.wide.column
+          .field
+            = form.label :birthday
+            = form.text_field :birthday, id: :teacher_birthday
+        .eight.wide.column
+          .field
+            = form.label :cpf
+            = form.text_field :cpf, id: :teacher_cpf
+        .eight.wide.column
+          .field
+            = form.label :unit_id
+            = form.select :unit_id, @units, {}, {id: :teacher_unit_id}
+        .sixteen.wide.column
+          .actions
+            = form.submit class: 'ui button black right floated'

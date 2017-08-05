@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title Imperial School
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+  body
+    .ui.fixed.inverted.menu.main-menu
+      .right.menu
+        .ui.inline.dropdown.item
+          .text
+            i.user.icon
+          i.dropdown.icon
+          .menu
+            .item
+              a.ui
+                i.rebel.icon
+                | Sair
+    .ui.grid
+      .two.wide.column
+        .ui.vertical.inverted.sidebar.labeled.icon.menu.visible style="padding-top:40px;"
+          = menu_to 'home', root_path, 'home icon'
+          = menu_to 'schools', schools_path, 'fa-star-death star-wars-icon'
+          = menu_to 'units', units_path, 'fa-galactic-imperium star-wars-icon'
+          = menu_to 'classes', school_classes_path, 'fa-sith-imperium star-wars-icon'
+          = menu_to 'teachers', teachers_path, 'fa-darth-vader star-wars-icon'
+          = menu_to 'studants', studants_path, 'fa-stormtroopper star-wars-icon'
+          = menu_to 'responsibles', responsibles_path, 'fa-dark-sun-sith star-wars-icon'
+          = menu_to 'users', users_path, 'fa-r2d2 star-wars-icon'
+      .fourteen.wide.column
+        .ui.padded.grid
+          .row
+            .sixteen.wide.column
+              = yield
+  = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  = yield :js

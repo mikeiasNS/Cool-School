@@ -1,0 +1,8 @@
+- if object.errors.any?
+  div class=("ui warning message") 
+    i.close.icon
+    - unless object.nil?
+      ul.list
+        - object.errors.each do |attr, msg|
+          - i18n_attr = I18n.t("activerecord.attributes.#{object.class.name.downcase}.#{attr}")
+          li= "#{i18n_attr.capitalize} - #{msg} "

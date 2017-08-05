@@ -1,0 +1,17 @@
+p#notice
+  = notice
+p
+  strong
+    | Name:
+  = @studant.name
+p
+  strong
+    | Birthday:
+  = @studant.birthday
+p
+  strong
+    | Unit:
+  = @studant.unit
+= link_to 'Edit', edit_studant_path(@studant)
+|  | 
+= link_to 'Back', studants_path

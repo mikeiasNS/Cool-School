@@ -1,0 +1,21 @@
+p#notice
+  = notice
+p
+  strong
+    | Name:
+  = @teacher.name
+p
+  strong
+    | Cpf:
+  = @teacher.cpf
+p
+  strong
+    | Birthday:
+  = @teacher.birthday
+p
+  strong
+    | Unit:
+  = @teacher.unit
+= link_to 'Edit', edit_teacher_path(@teacher)
+|  | 
+= link_to 'Back', teachers_path

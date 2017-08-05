@@ -1,0 +1,19 @@
+@import 'semantic';
+@import 'fonts';
+@import 'star-wars';
+
+.back-icon {
+  padding-top: 10px;
+  font-size: 3em !important;
+}
+
+.star-wars-icon {
+  font-size: 2em;
+  display: block;
+}
+
+.ui.form .success.message,
+.ui.form .warning.message,
+.ui.form .error.message {
+  display: block;
+}

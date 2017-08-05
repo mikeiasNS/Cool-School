@@ -1,0 +1,21 @@
+.ui.grid
+  .ten.wide.column
+    = form_with(model: user, local: true, class: 'ui form') do |form|
+      .ui.grid
+        .sixteen.wide.column
+          = render 'shared/error_messages', object: user
+        .sixteen.wide.column
+          .field
+            = form.label :name
+            = form.text_field :name, id: :user_name
+        .eight.wide.column
+          .field
+            = form.label :username
+            = form.text_field :username, id: :user_username
+        .eight.wide.column
+          .field
+            = form.label :password
+            = form.text_field :password, id: :user_password
+        .sixteen.wide.column
+          .actions
+              = form.submit class: 'ui button black right floated'

@@ -1,0 +1,22 @@
+.ui.grid
+  .ten.wide.column
+    = form_with(model: responsible, local: true, class: 'ui form') do |form|
+      - if responsible.errors.any?
+        #error_explanation
+          =render 'shared/error_messages', object: responsible
+      .ui.grid
+        .ten.wide.column
+          .field
+            = form.label :name
+            = form.text_field :name, id: :responsible_name
+        .six.wide.column
+          .field
+            = form.label :birthday
+            = form.text_field :birthday, id: :responsible_birthday
+        .ten.wide.column
+          .field
+            = form.label :cpf
+            = form.text_field :cpf, id: :responsible_cpf
+      
+      .actions
+        = form.submit class: 'ui button black right floated'

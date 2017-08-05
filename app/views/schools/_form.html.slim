@@ -1,0 +1,11 @@
+.ui.grid
+  .seven.wide.column
+    = form_with(model: school, local: true, class: 'ui form') do |form|
+      - if school.errors.any?
+        #error_explanation
+          =render 'shared/error_messages', object: school
+      .field
+        = form.label :name
+        = form.text_field :name, id: :school_name
+      .actions
+        = form.submit class: 'ui button right floated'

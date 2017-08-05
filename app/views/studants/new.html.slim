@@ -1,0 +1,8 @@
+.ui.grid
+  .one.wide.column
+    =link_to studants_path
+      i.angle.left.icon.back-icon
+  .fifteen.wide.column
+    h1
+      | Novo Aluno
+    = render 'form', studant: @studant

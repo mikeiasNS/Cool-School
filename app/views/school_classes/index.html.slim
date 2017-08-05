@@ -1,0 +1,30 @@
+p#notice
+  = notice
+= link_to 'Nova Turma', new_school_class_path, class: 'ui button black right floated'
+h1
+  = t "menu.classes"
+table.ui.very.basic.table
+  thead
+    tr
+      th
+        = t "activerecord.attributes.school_class.number"
+      th
+        = t "activerecord.attributes.school_class.teacher_id"
+      th
+        = t "activerecord.attributes.school_class.unit_id"
+      th.right.aligned.collapsing[colspan="2"]
+  tbody
+    - @school_classes.each do |school_class|
+      tr
+        td
+          = school_class.number
+        td
+          = school_class.teacher.name
+        td
+          = school_class.unit.name
+        td.right.aligned.collapsing
+          = link_to edit_school_class_path(school_class)
+            i.edit.icon
+        td.right.aligned.collapsing
+          = link_to school_class, method: :delete, data: { confirm: 'Are you sure?' }
+            i.remove.icon
