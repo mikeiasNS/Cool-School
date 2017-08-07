@@ -28,7 +28,7 @@ class SchoolClassesController < ApplicationController
         format.html { redirect_to school_classes_path, notice: 'School class was successfully created.' }
         format.json { render :show, status: :created, location: @school_class }
       else
-        format.html { render :new }
+        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @school_class.errors, status: :unprocessable_entity }
       end
     end
@@ -42,7 +42,7 @@ class SchoolClassesController < ApplicationController
         format.html { redirect_to school_classes_path, notice: 'School class was successfully updated.' }
         format.json { render :show, status: :ok, location: @school_class }
       else
-        format.html { render :edit }
+        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @school_class.errors, status: :unprocessable_entity }
       end
     end

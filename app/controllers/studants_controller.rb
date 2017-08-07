@@ -27,7 +27,7 @@ class StudantsController < ApplicationController
         format.html { redirect_to studants_path, notice: 'Studant was successfully created.' }
         format.json { render :show, status: :created, location: @studant }
       else
-        format.html { render :new }
+        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @studant.errors, status: :unprocessable_entity }
       end
     end
@@ -41,7 +41,7 @@ class StudantsController < ApplicationController
         format.html { redirect_to studants_path, notice: 'Studant was successfully updated.' }
         format.json { render :show, status: :ok, location: @studant }
       else
-        format.html { render :edit }
+        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @studant.errors, status: :unprocessable_entity }
       end
     end

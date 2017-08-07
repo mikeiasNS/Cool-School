@@ -5,14 +5,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(username: params[:username]).authenticate(params[:password])
+    @user = User.find_by(username: params[:username]).try(:authenticate, params[:password])
     if @user
       reset_session
       session[:user_id] = @user.id
       redirect_to root_path
     else
       flash.now[:error] = "Credenciais inválidas"
-      render :new
+      render :new, status: :unauthorized
     end
   end
 
