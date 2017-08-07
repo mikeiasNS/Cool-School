@@ -1,0 +1,32 @@
+.ui.modal#search-modal
+  .header
+    = title
+  .content
+    .ui.grid.padded
+      .fourteen.wide.column
+        .ui.left.icon.input style="width: 100%;"
+          input#filter
+          i.search.icon
+      .two.wide.column
+        button.ui.button.black.right.floated#search Buscar
+      .sixteen.wide.column
+        table.ui.very.basic.table
+          thead
+            tr
+              th.collapsing.center.aligned #
+              th Nome
+          tbody
+            = form.collection_check_boxes attribute, list, value, label do |b|
+              tr class=("#{b.text}")
+                td.collapsing.center.aligned
+                  .ui.checkbox
+                    = b.check_box
+                    label
+                td
+                  = b.label
+
+  .actions
+    .ui.deny.button
+      | Cancelar
+    button.ui.black.right.button#confirm type="buton"
+      | Confirmar

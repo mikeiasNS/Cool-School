@@ -4,12 +4,7 @@ class ResponsiblesController < ApplicationController
   # GET /responsibles
   # GET /responsibles.json
   def index
-    @responsibles = Responsible.all
-  end
-
-  # GET /responsibles/1
-  # GET /responsibles/1.json
-  def show
+    @responsibles = Responsible.where('name like :n', n: "%#{params[:filter]}%").order(created_at: :desc)
   end
 
   # GET /responsibles/new
@@ -28,7 +23,7 @@ class ResponsiblesController < ApplicationController
 
     respond_to do |format|
       if @responsible.save
-        format.html { redirect_to @responsible, notice: 'Responsible was successfully created.' }
+        format.html { redirect_to responsibles_path, notice: 'Responsible was successfully created.' }
         format.json { render :show, status: :created, location: @responsible }
       else
         format.html { render :new }
@@ -42,7 +37,7 @@ class ResponsiblesController < ApplicationController
   def update
     respond_to do |format|
       if @responsible.update(responsible_params)
-        format.html { redirect_to @responsible, notice: 'Responsible was successfully updated.' }
+        format.html { redirect_to responsibles_path, notice: 'Responsible was successfully updated.' }
         format.json { render :show, status: :ok, location: @responsible }
       else
         format.html { render :edit }

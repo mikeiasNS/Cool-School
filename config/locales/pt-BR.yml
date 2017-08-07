@@ -33,7 +33,7 @@ pt-BR:
         number: Número
         complement: Complemento
         school_id: Escola
-      school_class:
+      school_class_id:
         teacher_id: Professor
         unit_id: Unidade
         number: Número da sala
@@ -45,16 +45,19 @@ pt-BR:
       studant:
         name: Nome
         birthday: Data de nascimento
+        school_class_id: Turma
+        school_class: Turma
+        responsibles: Responsáveis
         unit_id: Unidade
       responsible:
         name: Nome
         birthday: Data de nascimento
         cpf: CPF
+        studants: Alunos
     errors:
       models:
-        user:
-          agent_should_have_an_contract: Um agente deve ter um contrato
-          name_and_birthday_should_by_unique: Já exite um usuário com esse nome e data de nascimento
+        studant:
+          studant_should_have_a_responsible: O Aluno precisa ter no mínimo um responsável
       messages:
         record_invalid: 'A validação falhou: %{errors}'
         restrict_dependent_destroy:

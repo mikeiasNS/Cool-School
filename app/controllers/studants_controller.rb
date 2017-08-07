@@ -1,11 +1,11 @@
 class StudantsController < ApplicationController
   before_action :set_studant, only: [:edit, :update, :destroy]
-  before_action :set_units, only: [:edit, :new]
+  before_action :set_classes, only: [:edit, :new, :create, :update]
 
   # GET /studants
   # GET /studants.json
   def index
-    @studants = Studant.all
+    @studants = Studant.order(created_at: :desc)
   end
 
   # GET /studants/new
@@ -24,7 +24,7 @@ class StudantsController < ApplicationController
 
     respond_to do |format|
       if @studant.save
-        format.html { redirect_to @studant, notice: 'Studant was successfully created.' }
+        format.html { redirect_to studants_path, notice: 'Studant was successfully created.' }
         format.json { render :show, status: :created, location: @studant }
       else
         format.html { render :new }
@@ -38,7 +38,7 @@ class StudantsController < ApplicationController
   def update
     respond_to do |format|
       if @studant.update(studant_params)
-        format.html { redirect_to @studant, notice: 'Studant was successfully updated.' }
+        format.html { redirect_to studants_path, notice: 'Studant was successfully updated.' }
         format.json { render :show, status: :ok, location: @studant }
       else
         format.html { render :edit }
@@ -63,12 +63,12 @@ class StudantsController < ApplicationController
       @studant = Studant.find(params[:id])
     end
 
-    def set_units
-      @units = Unit.all.map {|u| [u.name, u.id]}
+    def set_classes
+      @classes = SchoolClass.all.map {|c| [c.full_name, c.id]}
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def studant_params
-      params.require(:studant).permit(:name, :birthday, :unit_id)
+      params.require(:studant).permit(:name, :birthday, :school_class_id, responsible_ids: [])
     end
 end

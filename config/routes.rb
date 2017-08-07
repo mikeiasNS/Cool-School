@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   root 'pages#home'
 
+  # Session
+  get  "login",  to: "sessions#new"
+  post "login",  to: "sessions#create"
+  get  "logout", to: "sessions#destroy"
+
   resources :responsibles, except: [:show]
   resources :studants, except: [:show]
   resources :school_classes, except: [:show]

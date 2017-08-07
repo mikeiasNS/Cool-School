@@ -4,7 +4,7 @@ class UnitsController < ApplicationController
   # GET /units
   # GET /units.json
   def index
-    @units = Unit.all
+    @units = Unit.order(created_at: :desc)
   end
 
   # GET /units/new

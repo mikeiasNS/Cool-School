@@ -13,10 +13,33 @@
           .field
             = form.label :birthday
             = form.text_field :birthday, id: :studant_birthday
+        .sixteen.wide.column
+          .field
+            = form.label :school_class_id
+            = form.select :school_class_id, @classes, {}
+        .six.wide.column
+          table.ui.very.basic.table
+            thead
+              tr
+                th #
+                th
+                  = t "menu.responsibles"
+            tbody#responsible-list
+              - studant.responsibles.each do |responsible|
+                tr
+                  td
+                    = responsible.id
+                  td
+                    = responsible.name
         .six.wide.column
           .field
-            = form.label :unit_id
-            = form.select :unit_id, @units, {}, {id: :studant_unit_id}
+            label Adicionar Responsável
+            button.ui.button.black.search-responsible type='button'
+              i.plus.icon
+        = render 'shared/search_modal', title: I18n.t('menu.responsibles'), form: form, attribute: :responsible_ids, list: Responsible.all, value: :id, label: :name
         .sixteen.wide.column
           .actions
             = form.submit class: 'ui button black floated'
+
+- content_for :js do
+  = include_js 'studant/form'

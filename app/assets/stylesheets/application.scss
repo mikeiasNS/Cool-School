@@ -1,6 +1,7 @@
 @import 'semantic';
 @import 'fonts';
 @import 'star-wars';
+@import 'sessions';
 
 .back-icon {
   padding-top: 10px;
@@ -12,8 +13,26 @@
   display: block;
 }
 
+.user-icon {
+  font-size: 1.5em;
+}
+
+.logout-button {
+  color: black !important;
+}
+
 .ui.form .success.message,
 .ui.form .warning.message,
 .ui.form .error.message {
   display: block;
+}
+
+.logo {
+  font-size: 5em !important; 
+  margin-top:20px !important;
+}
+
+.login-body-icon {
+  font-size: 20em !important;
+  color: white;
 }

@@ -1,10 +1,9 @@
 class Studant < ApplicationRecord
-  belongs_to :unit
+  belongs_to :school_class
   has_and_belongs_to_many :responsibles
-  has_and_belongs_to_many :school_classes
 
-  validates_presence_of :name, :birthday, :unit_id
-  validate :at_least_one_responsible
+  validates_presence_of :name, :birthday, :school_class_id
+  # validate :at_least_one_responsible
 
   private
   def at_least_one_responsible

@@ -1,12 +1,12 @@
 class SchoolClassesController < ApplicationController
   before_action :set_school_class, only: [:edit, :update, :destroy]
-  before_action :set_teachers, only: [:edit, :new]
-  before_action :set_units, only: [:edit, :new]
+  before_action :set_teachers, only: [:edit, :new, :create, :update]
+  before_action :set_units, only: [:edit, :new, :create, :update]
 
   # GET /school_classes
   # GET /school_classes.json
   def index
-    @school_classes = SchoolClass.all
+    @school_classes = SchoolClass.order(created_at: :desc)
   end
 
   # GET /school_classes/new
@@ -25,7 +25,7 @@ class SchoolClassesController < ApplicationController
 
     respond_to do |format|
       if @school_class.save
-        format.html { redirect_to @school_class, notice: 'School class was successfully created.' }
+        format.html { redirect_to school_classes_path, notice: 'School class was successfully created.' }
         format.json { render :show, status: :created, location: @school_class }
       else
         format.html { render :new }
@@ -39,7 +39,7 @@ class SchoolClassesController < ApplicationController
   def update
     respond_to do |format|
       if @school_class.update(school_class_params)
-        format.html { redirect_to @school_class, notice: 'School class was successfully updated.' }
+        format.html { redirect_to school_classes_path, notice: 'School class was successfully updated.' }
         format.json { render :show, status: :ok, location: @school_class }
       else
         format.html { render :edit }

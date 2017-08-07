@@ -1,4 +1,4 @@
-p#notice
+p.notice
   = notice
 = link_to 'Novo Aluno', new_studant_path, class: 'ui button black right floated'
 h1
@@ -21,7 +21,7 @@ table.ui.very.basic.table
         td
           = studant.birthday
         td
-          = studant.unit.name
+          = studant.school_class.full_name
         td.right.aligned.collapsing
           = link_to edit_studant_path(studant)
             i.edit.icon

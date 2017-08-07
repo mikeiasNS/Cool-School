@@ -4,7 +4,7 @@ class SchoolsController < ApplicationController
   # GET /schools
   # GET /schools.json
   def index
-    @schools = School.all
+    @schools = School.order(created_at: :desc)
   end
 
   # GET /schools/new

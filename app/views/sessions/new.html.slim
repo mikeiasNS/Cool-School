@@ -1,0 +1,21 @@
+body
+  .ui.vertically.padded.centered.grid.login
+    .five.wide.column.center.aligned
+      i.fa-darth-vader.login-body-icon
+    .five.wide.column
+      .ui.white.segment
+        center
+          = link_to login_path
+            i.empire.icon.black.logo
+        = form_for login_path, html: {class: "ui form"} do |f|
+          .field
+            = text_field_tag :username, params[:username], placeholder: "Nome de usuário"
+          .field
+            = password_field_tag :password, params[:email], placeholder: "Senha"
+          .field
+            = submit_tag "Entrar", :class => "ui submit black fluid button"
+    .five.wide.column.center.aligned
+      i.fa-stormtroopper.login-body-icon
+    .row
+      .five.wide.column.center.aligned
+        i.fa-crused-lightsaber.login-body-icon

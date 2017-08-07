@@ -9,17 +9,18 @@ html
     .ui.fixed.inverted.menu.main-menu
       .right.menu
         .ui.inline.dropdown.item
+          i.fa-r2d2.user-icon
           .text
-            i.user.icon
+            = current_user.name
           i.dropdown.icon
           .menu
-            .item
-              a.ui
+            = link_to logout_path, class: 'ui'
+              .item.logout-button
                 i.rebel.icon
                 | Sair
     .ui.grid
       .two.wide.column
-        .ui.vertical.inverted.sidebar.labeled.icon.menu.visible style="padding-top:40px;"
+        .ui.vertical.inverted.sidebar.labeled.icon.menu.visible style="padding-top:50px;"
           = menu_to 'home', root_path, 'home icon'
           = menu_to 'schools', schools_path, 'fa-star-death star-wars-icon'
           = menu_to 'units', units_path, 'fa-galactic-imperium star-wars-icon'
@@ -34,4 +35,5 @@ html
             .sixteen.wide.column
               = yield
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  = yield :js
+  script type="text/javascript"
+    = yield :js

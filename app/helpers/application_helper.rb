@@ -5,4 +5,7 @@ module ApplicationHelper
       content_tag(:i, nil, class: "#{icon}") + content_tag(:span, t("menu.#{content}"), class: "mobile hidden")
     end
   end
+  def include_js(file_path)
+    raw Rails.application.assets["#{file_path}.js"].to_s
+  end
 end

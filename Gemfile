@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'slim'
 gem 'jquery-rails'
+gem 'seed_dump'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

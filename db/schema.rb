@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170805070840) do
+ActiveRecord::Schema.define(version: 20170806234741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "responsible_studants", force: :cascade do |t|
+    t.bigint "responsible_id"
+    t.bigint "studant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["responsible_id"], name: "index_responsible_studants_on_responsible_id"
+    t.index ["studant_id"], name: "index_responsible_studants_on_studant_id"
+  end
 
   create_table "responsibles", force: :cascade do |t|
     t.string "name"
@@ -40,13 +49,6 @@ ActiveRecord::Schema.define(version: 20170805070840) do
     t.index ["unit_id"], name: "index_school_classes_on_unit_id"
   end
 
-  create_table "school_classes_studants", force: :cascade do |t|
-    t.bigint "school_class_id"
-    t.bigint "studant_id"
-    t.index ["school_class_id"], name: "index_school_classes_studants_on_school_class_id"
-    t.index ["studant_id"], name: "index_school_classes_studants_on_studant_id"
-  end
-
   create_table "schools", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -59,6 +61,8 @@ ActiveRecord::Schema.define(version: 20170805070840) do
     t.bigint "unit_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "school_class_id"
+    t.index ["school_class_id"], name: "index_studants_on_school_class_id"
     t.index ["unit_id"], name: "index_studants_on_unit_id"
   end
 
@@ -94,6 +98,8 @@ ActiveRecord::Schema.define(version: 20170805070840) do
     t.index ["school_id"], name: "index_users_on_school_id"
   end
 
+  add_foreign_key "responsible_studants", "responsibles"
+  add_foreign_key "responsible_studants", "studants"
   add_foreign_key "school_classes", "teachers"
   add_foreign_key "school_classes", "units"
   add_foreign_key "studants", "units"
