@@ -22,9 +22,9 @@ table.ui.very.basic.table
           = responsible.cpf
         td
           = responsible.birthday
-        td
+        td.right.aligned.collapsing
           = link_to edit_responsible_path(responsible)
             i.edit.icon
-        td
+        td.right.aligned.collapsing
           = link_to responsible, method: :delete, data: { confirm: 'Are you sure?' }
             i.remove.icon
